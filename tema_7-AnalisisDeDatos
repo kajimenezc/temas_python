@@ -1,0 +1,339 @@
+import numpy as np
+import pandas as pd
+from datetime import datetime, timedelta
+
+""" # 1. Un array unidimensional con los números del 1 al 10 utilizando array()
+array_1_10 = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])  # Crear un array con los números del 1 al 10
+print("Array unidimensional del 1 al 10:")
+print(array_1_10)
+
+# 2. Una matriz de ceros de tamaño 3x3 utilizando zeros()
+matriz_ceros = np.zeros((3, 3))  # Crear una matriz de ceros 3x3
+print("\nMatriz de ceros 3x3:")
+print(matriz_ceros)
+
+# 3. Un array unidimensional con 5 unos utilizando ones()
+array_unos = np.ones(5)  # Crear un array unidimensional con 5 unos
+print("\nArray unidimensional con 5 unos:")
+print(array_unos)
+
+# 4. Un array con 8 valores equidistantes entre 0 y 1 (ambos incluidos) utilizando linspace()
+array_equidistante = np.linspace(0, 1, 8)  # Crear un array con 8 valores equidistantes entre 0 y 1
+print("\nArray con 8 valores equidistantes entre 0 y 1:")
+print(array_equidistante)
+
+# 5. Un array con los números pares del 2 al 20 utilizando arange()
+array_pares = np.arange(2, 21, 2)  # Crear un array con los números pares del 2 al 20
+print("\nArray con números pares del 2 al 20:")
+print(array_pares) """
+
+""" # Nuevo programa: Array tridimensional con valores aleatorios
+print("\n" + "="*50)
+print("PROGRAMA: Array NumPy tridimensional 4x3x2 con valores aleatorios")
+print("="*50)
+
+# Crear un array tridimensional de tamaño 4x3x2 con valores aleatorios enteros entre 1 y 100
+array_3d = np.random.randint(1, 101, size=(4, 3, 2))
+
+print("Array tridimensional 4x3x2:")
+print(array_3d)
+
+# Mostrar información del array
+print("\nInformación del array:")
+print(f"Forma (shape): {array_3d.shape}")
+print(f"Número de dimensiones (ndim): {array_3d.ndim}")
+print(f"Número total de elementos (size): {array_3d.size}")
+print(f"Tipo de datos (dtype): {array_3d.dtype}")
+print(f"Tamaño en bytes de cada elemento (itemsize): {array_3d.itemsize}")
+print(f"Tamaño total en bytes (nbytes): {array_3d.nbytes}")
+
+# Verificar si nbytes es igual al producto de size por itemsize
+verificacion = array_3d.nbytes == array_3d.size * array_3d.itemsize
+print(f"\n¿nbytes == size * itemsize? {verificacion}")
+ """
+
+
+# Crear un array NumPy bidimensional de 4x5 con números aleatorios entre 0 y 100
+array_2d = np.random.randint(0, 101, size=(4, 5))
+
+print("Array bidimensional 4x5:")
+print(array_2d)
+print()
+
+# Calcular la media de todo el array
+media_total = np.mean(array_2d)
+print(f"Media total del array: {media_total}")
+
+# Calcular la desviación estándar de todo el array
+desviacion_estandar = np.std(array_2d)
+print(f"Desviación estándar del array: {desviacion_estandar}")
+
+# Encontrar el valor máximo y mínimo de todo el array
+valor_maximo = np.max(array_2d)
+valor_minimo = np.min(array_2d)
+print(f"Valor máximo del array: {valor_maximo}")
+print(f"Valor mínimo del array: {valor_minimo}")
+print()
+
+# Calcular la suma de cada fila del array
+suma_filas = np.sum(array_2d, axis=1)
+print(f"Suma de cada fila: {suma_filas}")
+
+# Calcular la media de cada columna del array
+media_columnas = np.mean(array_2d, axis=0)
+print(f"Media de cada columna: {media_columnas}")
+
+# Crear un array NumPy bidimensional de 4x5 con números aleatorios entre 0 y 100
+array_2d = np.random.randint(0, 101, size=(4, 5))
+
+print("Array bidimensional 4x5:")
+print(array_2d)
+print()
+
+# Calcular la media de todo el array
+media_total = np.mean(array_2d)
+print(f"Media total del array: {media_total}")
+
+# Calcular la desviación estándar de todo el array
+desviacion_estandar = np.std(array_2d)
+print(f"Desviación estándar del array: {desviacion_estandar}")
+
+# Encontrar el valor máximo y mínimo de todo el array
+valor_maximo = np.max(array_2d)
+valor_minimo = np.min(array_2d)
+print(f"Valor máximo del array: {valor_maximo}")
+print(f"Valor mínimo del array: {valor_minimo}")
+print()
+
+# Calcular la suma de cada fila del array
+suma_filas = np.sum(array_2d, axis=1)
+print(f"Suma de cada fila: {suma_filas}")
+
+# Calcular la media de cada columna del array
+media_columnas = np.mean(array_2d, axis=0)
+print(f"Media de cada columna: {media_columnas}")
+
+# ============================================================================
+# ANÁLISIS DE TEMPERATURAS EN TRES CIUDADES
+# ============================================================================
+print("\n" + "="*70)
+print("ANÁLISIS ESTADÍSTICO DE TEMPERATURAS EN TRES CIUDADES")
+print("="*70)
+
+# Crear datos de temperaturas diarias (3 ciudades x 30 días)
+# Temperaturas en grados Celsius para un mes
+np.random.seed(42)  # Para reproducibilidad
+temperaturas = np.array([
+    np.random.uniform(15, 28, 30),  # Ciudad 1: temperaturas de 15 a 28°C
+    np.random.uniform(10, 25, 30),  # Ciudad 2: temperaturas de 10 a 25°C
+    np.random.uniform(20, 35, 30),  # Ciudad 3: temperaturas de 20 a 35°C
+])
+
+# Redondear a 1 decimal para mejor legibilidad
+temperaturas = np.round(temperaturas, 1)
+
+ciudades = ['Ciudad A', 'Ciudad B', 'Ciudad C']
+
+print("\nDatos de temperaturas (primeros 10 días):")
+for i, ciudad in enumerate(ciudades):
+    print(f"{ciudad}: {temperaturas[i, :10]}")
+
+print("\n" + "-"*70)
+print("ESTADÍSTICAS POR CIUDAD")
+print("-"*70)
+
+# Diccionarios para almacenar resultados
+media_ciudades = {}
+temp_max_ciudades = {}
+temp_min_ciudades = {}
+mediana_ciudades = {}
+Q1_ciudades = {}
+Q3_ciudades = {}
+IQR_ciudades = {}
+outliers_ciudades = {}
+
+# Analizar cada ciudad
+for i, ciudad in enumerate(ciudades):
+    temps = temperaturas[i, :]
+    
+    # 1. Calcular la temperatura media para cada ciudad
+    media = np.mean(temps)
+    media_ciudades[ciudad] = media
+    print(f"\n{ciudad}:")
+    print(f"  Temperatura media: {media:.2f}°C")
+    
+    # 2. Identificar la temperatura máxima y mínima
+    temp_max = np.max(temps)
+    temp_min = np.min(temps)
+    temp_max_ciudades[ciudad] = temp_max
+    temp_min_ciudades[ciudad] = temp_min
+    print(f"  Temperatura máxima: {temp_max:.2f}°C")
+    print(f"  Temperatura mínima: {temp_min:.2f}°C")
+    print(f"  Rango: {temp_max - temp_min:.2f}°C")
+    
+    # 3. Calcular la mediana de temperaturas
+    mediana = np.median(temps)
+    mediana_ciudades[ciudad] = mediana
+    print(f"  Mediana: {mediana:.2f}°C")
+    
+    # 4. Calcular los cuartiles y el rango intercuartílico (IQR)
+    Q1 = np.percentile(temps, 25)
+    Q3 = np.percentile(temps, 75)
+    IQR = Q3 - Q1
+    
+    Q1_ciudades[ciudad] = Q1
+    Q3_ciudades[ciudad] = Q3
+    IQR_ciudades[ciudad] = IQR
+    
+    print(f"  Q1 (25er percentil): {Q1:.2f}°C")
+    print(f"  Q3 (75er percentil): {Q3:.2f}°C")
+    print(f"  Rango Intercuartílico (IQR): {IQR:.2f}°C")
+    
+    # 5. Identificar outliers
+    limite_inferior = Q1 - 1.5 * IQR
+    limite_superior = Q3 + 1.5 * IQR
+    
+    outliers = temps[(temps < limite_inferior) | (temps > limite_superior)]
+    dias_outliers = np.where((temps < limite_inferior) | (temps > limite_superior))[0] + 1
+    
+    outliers_ciudades[ciudad] = {
+        'valores': outliers,
+        'dias': dias_outliers,
+        'limite_inferior': limite_inferior,
+        'limite_superior': limite_superior
+    }
+    
+    print(f"  Rango normal: [{limite_inferior:.2f}°C, {limite_superior:.2f}°C]")
+    
+    if len(outliers) > 0:
+        print(f"  Outliers encontrados: {len(outliers)}")
+        for j, (valor, dia) in enumerate(zip(outliers, dias_outliers)):
+            print(f"    - Día {dia}: {valor:.2f}°C")
+    else:
+        print(f"  Outliers encontrados: 0")
+
+print("\n" + "="*70)
+print("RESUMEN COMPARATIVO")
+print("="*70)
+
+print("\nTemperatura media por ciudad:")
+for ciudad in ciudades:
+    print(f"  {ciudad}: {media_ciudades[ciudad]:.2f}°C")
+
+print("\nCiudad con mayor temperatura media:", max(media_ciudades, key=media_ciudades.get))
+print("Ciudad con menor temperatura media:", min(media_ciudades, key=media_ciudades.get))
+
+# ============================================================================
+# ANÁLISIS DE VENTAS DE PRODUCTOS CON PANDAS
+# ============================================================================
+print("\n" + "="*70)
+print("ANÁLISIS DE VENTAS DE PRODUCTOS")
+print("="*70)
+
+# Crear un diccionario con datos de ventas de productos
+datos_ventas = {
+    'producto': ['Laptop', 'Mouse', 'Teclado', 'Monitor', 'Webcam', 'Auriculares'],
+    'precio': [899.99, 29.99, 79.99, 299.99, 59.99, 149.99],
+    'unidades_vendidas': [15, 120, 85, 25, 50, 40],
+    'fecha_venta': [
+        datetime(2026, 1, 5),
+        datetime(2026, 1, 10),
+        datetime(2026, 2, 3),
+        datetime(2026, 2, 15),
+        datetime(2026, 3, 8),
+        datetime(2026, 3, 22)
+    ]
+}
+
+# Crear el DataFrame
+df_ventas = pd.DataFrame(datos_ventas)
+
+print("\nDataFrame original:")
+print(df_ventas)
+print()
+
+# 1. Añadir una nueva columna 'ingresos_totales'
+df_ventas['ingresos_totales'] = df_ventas['precio'] * df_ventas['unidades_vendidas']
+
+print("DataFrame con columna 'ingresos_totales':")
+print(df_ventas)
+print()
+
+# 2. Mostrar los productos ordenados de mayor a menor ingreso total
+print("-"*70)
+print("PRODUCTOS ORDENADOS POR INGRESOS TOTALES (Mayor a menor):")
+print("-"*70)
+df_ordenado = df_ventas.sort_values('ingresos_totales', ascending=False)
+print(df_ordenado[['producto', 'ingresos_totales']].to_string(index=False))
+print()
+
+# 3. Calcular y mostrar el precio promedio de todos los productos
+precio_promedio = df_ventas['precio'].mean()
+print(f"Precio promedio de todos los productos: ${precio_promedio:.2f}")
+print()
+
+# 4. Identificar y mostrar el producto con más unidades vendidas
+producto_max_unidades = df_ventas.loc[df_ventas['unidades_vendidas'].idxmax()]
+print("Producto con más unidades vendidas:")
+print(f"  Producto: {producto_max_unidades['producto']}")
+print(f"  Unidades vendidas: {int(producto_max_unidades['unidades_vendidas'])}")
+print(f"  Precio unitario: ${producto_max_unidades['precio']:.2f}")
+print(f"  Ingresos totales: ${producto_max_unidades['ingresos_totales']:.2f}")
+print()
+
+# Estadísticas adicionales
+print("-"*70)
+print("ESTADÍSTICAS ADICIONALES:")
+print("-"*70)
+print(f"Ingreso total por todas las ventas: ${df_ventas['ingresos_totales'].sum():.2f}")
+print(f"Precio máximo: ${df_ventas['precio'].max():.2f}")
+print(f"Precio mínimo: ${df_ventas['precio'].min():.2f}")
+print(f"Unidades totales vendidas: {int(df_ventas['unidades_vendidas'].sum())}")
+print(f"Promedio de unidades vendidas por producto: {df_ventas['unidades_vendidas'].mean():.2f}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
